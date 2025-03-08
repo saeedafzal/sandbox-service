@@ -8,5 +8,6 @@ import (
 
 func TestInit(t *testing.T) {
 	mux := Init()
-	assert.NotNil(t, mux)
+	assert.GreaterOrEqual(t, len(mux.Middlewares()), 1)
+	assert.GreaterOrEqual(t, len(mux.Routes()), 1)
 }

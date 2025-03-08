@@ -16,6 +16,6 @@ func TestPlainText(t *testing.T) {
 	PlainText(recorder, status, body)
 
 	assert.Equals(t, status, recorder.Code)
-	assert.Equals(t, "text/plain", recorder.Header().Get("Content-Type"))
+	assert.Equals(t, "text/plain; charset=utf-8", recorder.Header().Get("Content-Type"))
 	assert.Equals(t, body, recorder.Body.String())
 }
