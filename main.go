@@ -22,7 +22,7 @@ func main() {
 
 	// Start server
 	mux := api.Init()
-	port := store.GetInt("port")
+	port := store.GlobalStore.GetInt("port")
 	server := http.Server{Addr: fmt.Sprintf(":%d", port), Handler: mux}
 
 	go func() {

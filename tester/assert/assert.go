@@ -26,3 +26,9 @@ func GreaterOrEqual(t *testing.T, v1, v2 int) {
 		t.Errorf("Expected value %d to be greater than or equal to %d.", v1, v2)
 	}
 }
+
+func NoError(t *testing.T, err error) {
+	if err != nil {
+		t.Errorf("Expected no error, but got: %v", err)
+	}
+}

@@ -19,10 +19,12 @@ func Init() *chi.Mux {
 	// Handlers
 	healthHandler := handlers.HealthHandler{}
 	nicknameHandler := handlers.NicknameHandler{}
+	websocketHandler := handlers.WebSocketHandler{}
 
 	// Routes
 	mux.Get("/", healthHandler.GetVersion)
 	mux.Post("/nickname", nicknameHandler.SetNickname)
+	mux.Get("/stream", websocketHandler.Connect)
 
 	return mux
 }

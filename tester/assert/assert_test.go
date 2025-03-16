@@ -1,6 +1,9 @@
 package assert
 
-import "testing"
+import (
+	"testing"
+	"errors"
+)
 
 func TestEquals(t *testing.T) {
 	cases := []struct {
@@ -97,6 +100,30 @@ func TestGreaterOrEqual(t *testing.T) {
 
 			tst := &testing.T{}
 			GreaterOrEqual(tst, c.v1, c.v2)
+
+			if tst.Failed() != c.fails {
+				t.Errorf("expected: %t, actual: %t", c.fails, tst.Failed())
+			}
+		})
+	}
+}
+
+func TestNoError(t *testing.T) {
+	cases := []struct {
+		name string
+		value error
+		fails bool
+	}{
+		{"with error", errors.New(""), true},
+		{"with no error", nil, false},
+	}
+
+	for _, c := range cases {
+		t.Run(c.name, func(t *testing.T) {
+			t.Parallel()
+
+			tst := &testing.T{}
+			NoError(tst, c.value)
 
 			if tst.Failed() != c.fails {
 				t.Errorf("expected: %t, actual: %t", c.fails, tst.Failed())

@@ -33,7 +33,7 @@ func Flags() bool {
 		slog.Debug("Debug mode enabled.")
 	}
 
-	store.Put("version", version)
-	store.Put("port", *p)
+	store.GlobalStore.Put("version", version)
+	store.GlobalStore.Put("port", *p)
 	return false
 }
