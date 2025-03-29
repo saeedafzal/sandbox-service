@@ -1,8 +1,8 @@
 package model
 
 import (
-	"net/http"
 	"errors"
+	"net/http"
 )
 
 type NicknameRequest struct {

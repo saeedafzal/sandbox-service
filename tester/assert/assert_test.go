@@ -1,16 +1,16 @@
 package assert
 
 import (
-	"testing"
 	"errors"
+	"testing"
 )
 
 func TestEquals(t *testing.T) {
 	cases := []struct {
-		name string
+		name     string
 		expected interface{}
-		actual interface{}
-		fails bool
+		actual   interface{}
+		fails    bool
 	}{
 		{"equal strings", "hello", "hello", false},
 		{"non-equal strings", "hello", "world", true},
@@ -36,7 +36,7 @@ func TestEquals(t *testing.T) {
 
 func TestNotNil(t *testing.T) {
 	cases := []struct {
-		name string
+		name  string
 		value interface{}
 		fails bool
 	}{
@@ -60,7 +60,7 @@ func TestNotNil(t *testing.T) {
 
 func TestTrue(t *testing.T) {
 	cases := []struct {
-		name string
+		name  string
 		value bool
 		fails bool
 	}{
@@ -84,9 +84,9 @@ func TestTrue(t *testing.T) {
 
 func TestGreaterOrEqual(t *testing.T) {
 	cases := []struct {
-		name string
-		v1 int
-		v2 int
+		name  string
+		v1    int
+		v2    int
 		fails bool
 	}{
 		{"greater", 8, 2, false},
@@ -110,7 +110,7 @@ func TestGreaterOrEqual(t *testing.T) {
 
 func TestNoError(t *testing.T) {
 	cases := []struct {
-		name string
+		name  string
 		value error
 		fails bool
 	}{

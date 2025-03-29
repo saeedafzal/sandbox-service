@@ -2,23 +2,30 @@ package store
 
 import "sync"
 
-type Store struct {
-	data map[string]interface{}
+type Store[K comparable, V any] struct {
+	data map[K]V
 	mu   sync.RWMutex
 }
 
-var globalStore *Store
+var globalStore *Store[string, interface{}]
 var once sync.Once
 
 // Automatically runs when package imported.
 func init() {
 	once.Do(func() {
-		globalStore = &Store{
+		globalStore = &Store[string, interface{}]{
 			data: make(map[string]interface{}),
 		}
 	})
 }
 
+func New[K comparable, V any]() *Store[K, V] {
+	return &Store[K, V]{
+		data: make(map[K]V),
+	}
+}
+
+// Helper methods for the global store
 func Put(key string, value interface{}) {
 	globalStore.mu.Lock()
 	defer globalStore.mu.Unlock()

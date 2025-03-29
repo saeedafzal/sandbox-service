@@ -1,8 +1,8 @@
 package handlers_test
 
 import (
-	"testing"
 	"net/http"
+	"testing"
 
 	"github.com/saeedafzal/sandbox-service/tester/assert"
 )

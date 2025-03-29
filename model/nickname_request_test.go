@@ -1,8 +1,8 @@
 package model
 
 import (
-	"testing"
 	"errors"
+	"testing"
 
 	"github.com/saeedafzal/sandbox-service/tester/assert"
 )

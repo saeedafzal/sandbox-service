@@ -19,7 +19,7 @@ func Init() *chi.Mux {
 	// Handlers
 	healthHandler := handlers.HealthHandler{}
 	nicknameHandler := handlers.NicknameHandler{}
-	websocketHandler := handlers.WebSocketHandler{}
+	websocketHandler := handlers.NewWebSocketHandler()
 
 	// Routes
 	mux.Get("/", healthHandler.GetVersion)

@@ -1,9 +1,9 @@
 package handlers_test
 
 import (
-	"net/http/httptest"
-	"net/http"
 	"io"
+	"net/http"
+	"net/http/httptest"
 
 	"github.com/saeedafzal/sandbox-service/api"
 )
@@ -14,7 +14,7 @@ func setup() *httptest.Server {
 }
 
 func GET(s *httptest.Server, path string) *http.Response {
-	return request(s.URL + path, http.MethodGet, nil, nil)
+	return request(s.URL+path, http.MethodGet, nil, nil)
 }
 
 // Performs actual http request and returns response

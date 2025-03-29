@@ -7,7 +7,7 @@ import (
 	"github.com/saeedafzal/sandbox-service/render"
 )
 
-type NicknameHandler struct {}
+type NicknameHandler struct{}
 
 func (_ NicknameHandler) SetNickname(w http.ResponseWriter, r *http.Request) {
 	// Get nickname from request and validate

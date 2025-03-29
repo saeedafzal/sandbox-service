@@ -10,5 +10,5 @@ import (
 type HealthHandler struct{}
 
 func (_ HealthHandler) GetVersion(w http.ResponseWriter, r *http.Request) {
-	render.PlainText(w, http.StatusOK, store.GlobalStore.GetString("version"))
+	render.PlainText(w, http.StatusOK, store.GetString("version"))
 }
