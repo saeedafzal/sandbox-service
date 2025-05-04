@@ -131,3 +131,32 @@ func TestNoError(t *testing.T) {
 		})
 	}
 }
+
+func TestContains(t *testing.T) {
+	cases := []struct {
+		name  string
+		s     string
+		sub   string
+		fails bool
+	}{
+		{"has substring", "hello", "ello", false},
+		{"does not have substring", "hello", "bye", true},
+		{"empty substring", "hello", "", false},
+		{"empty string", "", "why", true},
+		{"string and substring empty", "", "", false},
+		{"repeated substring", "banana", "ana", false},
+	}
+
+	for _, c := range cases {
+		t.Run(c.name, func(t *testing.T) {
+			t.Parallel()
+
+			tst := &testing.T{}
+			Contains(tst, c.s, c.sub)
+
+			if tst.Failed() != c.fails {
+				t.Errorf("expected: %t, actual: %t", c.fails, tst.Failed())
+			}
+		})
+	}
+}

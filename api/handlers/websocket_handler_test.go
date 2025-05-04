@@ -4,8 +4,8 @@ import (
 	"strings"
 	"testing"
 
-	"github.com/saeedafzal/sandbox-service/tester/assert"
 	"github.com/gorilla/websocket"
+	"github.com/saeedafzal/sandbox-service/tester/assert"
 )
 
 func TestWebSocketHandlerSendsUserListOnConnect(t *testing.T) {

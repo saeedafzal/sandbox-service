@@ -16,9 +16,7 @@ import (
 
 func main() {
 	// Handle CLI flags
-	if config.Flags() {
-		return
-	}
+	config.Initialise()
 
 	// Start server
 	mux := api.Init()

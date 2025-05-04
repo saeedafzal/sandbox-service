@@ -104,3 +104,47 @@ func TestGetInt(t *testing.T) {
 
 	clear(globalStore.data)
 }
+
+func TestGetBool(t *testing.T) {
+	cases := []struct {
+		name     string
+		key      string
+		value    interface{}
+		expected bool
+	}{
+		{
+			name:     "non-existing key",
+			key:      "does not exist",
+			value:    false,
+			expected: false,
+		},
+		{
+			name:     "key with true value",
+			key:      "hello",
+			value:    true,
+			expected: true,
+		},
+		{
+			name:     "key with false value",
+			key:      "hello",
+			value:    false,
+			expected: false,
+		},
+		{
+			name:     "key with non-bool value",
+			key:      "hello",
+			value:    "this is not a bool",
+			expected: false,
+		},
+	}
+
+	for _, c := range cases {
+		t.Run(c.name, func(t *testing.T) {
+			globalStore.data["hello"] = c.value
+			actual := GetBool(c.key)
+			assert.Equals(t, c.expected, actual)
+		})
+	}
+
+	clear(globalStore.data)
+}

@@ -51,3 +51,13 @@ func GetInt(key string) int {
 	}
 	return 0
 }
+
+func GetBool(key string) bool {
+	globalStore.mu.Lock()
+	defer globalStore.mu.Unlock()
+
+	if v, ok := globalStore.data[key].(bool); ok {
+		return v
+	}
+	return false
+}

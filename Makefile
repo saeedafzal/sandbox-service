@@ -5,7 +5,7 @@ build:
 	go build -ldflags="$(LD_FLAGS) -s -w" -o bin/sandbox-service
 
 run: build
-	./bin/sandbox-service -debug
+	./bin/sandbox-service --debug
 
 test:
 	go test ./...
