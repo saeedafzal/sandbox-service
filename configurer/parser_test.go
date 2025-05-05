@@ -32,14 +32,12 @@ func TestParseConfiguration(t *testing.T) {
 		{
 			name:      "empty path",
 			path:      "",
-			willPanic: false,
-			expected:  map[string]string{},
+			willPanic: true,
 		},
 		{
 			name:      "whitespace path",
 			path:      "          ",
-			willPanic: false,
-			expected:  map[string]string{},
+			willPanic: true,
 		},
 		{
 			name:      "non-existent file",

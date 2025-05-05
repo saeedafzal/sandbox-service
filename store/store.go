@@ -61,3 +61,10 @@ func GetBool(key string) bool {
 	}
 	return false
 }
+
+func Clear() {
+	globalStore.mu.Lock()
+	defer globalStore.mu.Unlock()
+
+	clear(globalStore.data)
+}

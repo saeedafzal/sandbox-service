@@ -9,11 +9,6 @@ import (
 
 // Parses simple key=value configuration files.
 func (c *Configurer) parseConfiguration(path string) {
-	if strings.TrimSpace(path) == "" {
-		slog.Warn("No configuration file.")
-		return
-	}
-
 	f, err := os.Open(path)
 	if err != nil {
 		slog.Error("Error opening configuration file:", "path", path, "err", err)

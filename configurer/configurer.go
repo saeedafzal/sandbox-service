@@ -9,20 +9,19 @@ import (
 )
 
 type Configurer struct {
-	// defaults map[string]string
 	file   map[string]string
 	flags  map[string]string
 	merged map[string]string
 }
 
 var (
-	c       *Configurer
+	c *Configurer
+
 	version = "dev"
 )
 
 func init() {
 	c = &Configurer{
-		// defaults: make(map[string]string),
 		file:   make(map[string]string),
 		flags:  make(map[string]string),
 		merged: make(map[string]string),
@@ -30,7 +29,7 @@ func init() {
 }
 
 // If you need custom configuration file path flag, define it first as a flag
-// defined as `config` i.e `flag.String("config", "config.conf", "Path to file.")`.
+// defined as `config` i.e `flag.String("config", "", "Path to file.")`.
 func LoadConfiguration() {
 	// Get all flag defaults
 	flag.VisitAll(func(f *flag.Flag) {
@@ -48,10 +47,8 @@ func LoadConfiguration() {
 	}
 
 	// Merge maps with priority: defaults -> file -> flags
-	// maps.Copy(c.merged, c.defaults)
 	maps.Copy(c.merged, c.file)
 	maps.Copy(c.merged, c.flags)
-	// c.merged = merged
 
 	// Store values in global store
 	for key, raw := range c.merged {
