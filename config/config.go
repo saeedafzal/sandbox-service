@@ -18,6 +18,7 @@ func Initialise() {
 	flag.Bool("debug", false, "Enable debug mode.")
 	flag.Int("port", 8080, "Port to bind server to.")
 	flag.String("config", "", "Path to the configuration file.")
+	flag.String("origin", "localhost:5173", "CORS origin to allow.")
 	flag.Parse()
 
 	configurer.LoadConfiguration()

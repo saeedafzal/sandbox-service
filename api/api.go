@@ -3,6 +3,8 @@ package api
 import (
 	"github.com/saeedafzal/sandbox-service/api/handlers"
 
+	"github.com/saeedafzal/sandbox-service/store"
+
 	"github.com/go-chi/chi/v5"
 	"github.com/go-chi/chi/v5/middleware"
 )
@@ -16,10 +18,13 @@ func Init() *chi.Mux {
 		middleware.Recoverer,
 	)
 
+	// Stores
+	userStore := store.New[string, struct{}]()
+
 	// Handlers
 	healthHandler := handlers.HealthHandler{}
 	nicknameHandler := handlers.NicknameHandler{}
-	websocketHandler := handlers.NewWebSocketHandler()
+	websocketHandler := handlers.NewWebSocketHandler(userStore)
 
 	// Routes
 	mux.Get("/", healthHandler.GetVersion)
